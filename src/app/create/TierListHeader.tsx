@@ -192,7 +192,7 @@ function ExportImageButton() {
       node.style.width = "fit-content";
       node.style.maxWidth = "none";
       // Remove the `1fr` expansion for export.
-      node.style.gridTemplateColumns = "max-content max-content";
+      node.style.gridTemplateColumns = "var(--tier-label-width) max-content";
 
       for (const el of Array.from(
         node.querySelectorAll<HTMLElement>('[data-export-ignore="true"]'),

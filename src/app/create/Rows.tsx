@@ -212,7 +212,7 @@ function SortableTierRow({
     <div
       ref={containerRef}
       className={[
-        "relative col-span-2 grid grid-cols-subgrid items-start overflow-hidden",
+        "relative col-span-2 grid grid-cols-subgrid items-stretch overflow-hidden",
         settings.roundedRows ? "rounded-lg" : "",
         settings.borderStyle == "none"
           ? ""
@@ -232,9 +232,9 @@ function SortableTierRow({
         onClick={() => openEditor(rowIndex)}
         aria-label={`Edit row ${row.label}`}
         className={[
-          "min-w-16 px-2 self-stretch sm:min-w-20",
+          "w-full min-w-0 px-2 self-stretch",
           settings.boldLabels ? "font-bold" : "font-normal",
-          "flex items-center justify-center relative group transition-all whitespace-nowrap box-border",
+          "flex items-center justify-center relative group transition-all box-border",
           row.color.startsWith("bg-") ? row.color : "",
           "focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-300",
           settings.roundedRows ? "rounded-lg" : "rounded-none",
@@ -249,7 +249,7 @@ function SortableTierRow({
         }}
       >
         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity" />
-        <span className="relative z-10 transition-opacity duration-150 group-hover:opacity-0">
+        <span className="relative z-10 max-w-full text-center leading-tight [overflow-wrap:anywhere] transition-opacity duration-150 group-hover:opacity-0">
           {row.label}
         </span>
         <ClipboardPen className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 text-white opacity-0 group-hover:opacity-100 transition-opacity z-20" />
@@ -462,7 +462,7 @@ export default function Rows() {
       <div
         id="tier-rows-capture"
         className={[
-          "relative mx-auto grid w-full max-w-5xl select-none grid-cols-[max-content_minmax(0,1fr)] gap-x-0 box-border [--tier-label-width:4rem] sm:[--tier-label-width:5rem]",
+          "relative mx-auto grid w-full max-w-5xl select-none grid-cols-[var(--tier-label-width)_minmax(0,1fr)] gap-x-0 box-border [--tier-label-width:4rem] sm:[--tier-label-width:5rem]",
           rowGapClass(settings.rowGap),
           settings.borderStyle == "none" || settings.rowGap !== "none"
             ? ""
